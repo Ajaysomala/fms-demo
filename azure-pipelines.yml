@@ -1,0 +1,23 @@
+# SKETCH only. Finalise after we get Azure access and the staging API URL.
+trigger: none
+schedules:
+- cron: "30 3 * * *"
+  displayName: Daily run
+  branches:
+    include: [ main ]
+  always: true
+pool:
+  vmImage: ubuntu-latest
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: "3.11"
+- script: pip install -r requirements.txt
+  displayName: Install
+- script: pytest tests/api
+  displayName: API tests
+  env:
+    BASE_URL: $(STAGING_API_URL)
+- publish: reports
+  artifact: test-report
+  condition: always()

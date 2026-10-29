@@ -1,0 +1,9 @@
+# PLACEHOLDER flow. Replace texts with the real screen texts from the app.
+appId: com.im24x7.fms.customer.staging
+---
+- launchApp
+- tapOn: "Enter phone number"
+- inputText: "512345678"
+- tapOn: "Continue"
+- inputText: "1234"
+- assertVisible: "Home"
