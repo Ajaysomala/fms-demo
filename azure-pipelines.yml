@@ -5,7 +5,7 @@ schedules:
   displayName: Daily run
   branches:
     include: [ main ]
-  always: true
+  always: "true"
 pool:
   vmImage: ubuntu-latest
 steps:

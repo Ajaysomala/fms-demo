@@ -1,0 +1,17 @@
+appId: com.im24x7.fms.customer.staging
+env:
+  PHONE: "556789011"
+  OTP: "1234"
+---
+- launchApp:
+    clearState: true
+- tapOn: "English"
+- tapOn: "Next"
+- tapOn: "Sign in with Phone Number"
+- tapOn: "00 0000-0000"
+- inputText: ${PHONE}
+- hideKeyboard
+- tapOn: "Continue"
+- inputText: ${OTP}
+- hideKeyboard
+- tapOn: "Verify OTP"

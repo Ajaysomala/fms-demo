@@ -1,0 +1,30 @@
+body { font-family: "Segoe UI", Arial, sans-serif; background: #f5f7fb; color: #1f2937; margin: 0; padding: 24px; font-size: 14px; }
+h1 { font-size: 26px; color: #111827; border-left: 6px solid #2563eb; padding-left: 12px; }
+h2 { font-size: 18px; margin-top: 28px; color: #374151; }
+
+/* summary counts */
+.summary { background: #fff; padding: 14px 18px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.summary .passed { color: #16a34a; font-weight: 700; }
+.summary .failed { color: #dc2626; font-weight: 700; }
+.summary .skipped { color: #d97706; font-weight: 700; }
+
+/* environment table */
+#environment { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+
+/* results table */
+#results-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+#results-table th { background: #1e3a8a; color: #fff; text-align: left; padding: 10px 12px; }
+#results-table td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+#results-table tbody tr:hover { background: #f1f5ff; }
+
+/* result badges */
+td.col-result { font-weight: 700; }
+.passed td.col-result, td.col-result.passed { color: #16a34a; }
+.failed td.col-result, td.col-result.failed { color: #dc2626; }
+.skipped td.col-result, td.col-result.skipped { color: #d97706; }
+.failed { background: #fef2f2; }
+
+/* detail area ("How it ran" + error log) */
+.extras-row td, .extra td { background: #f9fafb; }
+.extras-row ol, .extra ol { margin: 6px 0 6px 18px; line-height: 1.7; }
+.log { background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: Consolas, monospace; font-size: 12px; }
