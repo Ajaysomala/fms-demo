@@ -1,0 +1,28 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Designs conflict on the main button (see Output C): "Next", "Confirm Booking" and "Proceed to Checkout" all appear.
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+env:
+  PACKAGE_NAME: "Premium Package"   # TODO: package must exist for the chosen kitchen on staging
+  ADDON_NAME: "Live Stations"       # design add-ons: Live Stations, Desserts, Bar (names to confirm)
+---
+- runFlow: chef_01_find_chef.yaml      # TODO navigation to "Select Booking Option"
+- tapOn: "Combo Packages"
+- assertVisible: "Book Combo Packages"
+- assertVisible: "Select Packages"
+
+- tapOn: ${PACKAGE_NAME}
+# TODO: guests stepper ("How many guests?") has minus/plus icons without text. Needs testIDs.
+# TODO: design says minimum guests is 10 ("Minimum no. of guests is 10").
+- tapOn: ${ADDON_NAME}
+- assertVisible: "Payment Details"
+
+# TODO: confirm button name in the real app ("Next" in one frame, "Confirm Booking" in another)
+- tapOn: "Next"
+- assertVisible: "We want to know more about the event"
+# TODO: "Select here" = event type dropdown. Option texts not in design.
+- tapOn: "Select here"
+# design: service tiers Food Only, Food+ Chef, Full Service. "Indoor/Outdoor" appears only for Full Service.
+- assertVisible: 'Select service tier\*'
+
+- tapOn: "Proceed to Checkout"
+- assertVisible: "Agree to Our Cancellation Policy"

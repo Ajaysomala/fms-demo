@@ -1,0 +1,40 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Texts are DESIGN texts (expectation, not proof). Check each one in Maestro Studio.
+# Maestro treats text as regex: escape ? * . + ( ) with a backslash (single quotes keep the backslash). TO CONFIRM in Studio.
+appId: com.im24x7.fms.customer.staging   # TODO: designs do not say Customer or Partner app. Confirm the app.
+env:
+  SERVICE_TYPE: "Home Chef"      # design cards: "Home Chef" and "Catering Services"
+  KITCHEN_NAME: "Eaz Chef"       # TODO: use a kitchen that exists on staging
+---
+# TODO login: reuse the existing flow. Design says "Continue with Phone Number"; the real app flow uses "Sign in with Phone Number".
+- runFlow: signup_flow.yaml
+
+# TODO navigation: Home -> Find Chef (design Home has "Find Chef" in the category row)
+- tapOn: "Find Chef"
+- assertVisible: 'What type of service do you need\?'
+- tapOn: ${SERVICE_TYPE}
+
+- assertVisible: 'Where\?'
+- assertVisible: 'When\?'
+- assertVisible: 'Ingredients & Cuisines\?'
+
+# TODO data: address. Design shows a saved address prefilled ("Dubai, Business Bay, Tower A, A...").
+# TODO: date and time use native pickers (design: "Select Date", "Select Time"). Steps to be walked in Studio.
+- tapOn: 'When\?'
+- assertVisible: "Select Date"
+
+- tapOn: 'Ingredients & Cuisines\?'
+- assertVisible: 'Will you provide ingredients\?\*'
+- tapOn: "No, Chef provides"
+# TODO: cuisines are a dropdown: Indian Food, Halal Food, Russian Food, Arab Food (list texts in design)
+- tapOn: "Next"
+
+# Providers list. TODO: the kitchen name appears on several cards, first match is used.
+- assertVisible: ${KITCHEN_NAME}
+- tapOn: ${KITCHEN_NAME}
+- assertVisible: "Book a Chef"
+- tapOn: "Book a Chef"
+
+- assertVisible: "Select Booking Option"
+- assertVisible: "Custom Dishes"
+- assertVisible: "Combo Packages"

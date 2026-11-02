@@ -1,0 +1,17 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Precondition (TODO data): an order in status "Delivered" (design) that has not been rated.
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+env:
+  REVIEW: "Test review"   # TODO
+---
+- runFlow: signup_flow.yaml
+# TODO navigation: My Orders -> Delivered tab -> open the order
+- assertVisible: "Order Details"
+- assertVisible: "Rate Service"
+- assertVisible: "Rate Kitchen"
+# TODO: star taps have no text in the design. Needs testIDs.
+- tapOn: "Share your experience with other customers..."
+- inputText: ${REVIEW}
+- hideKeyboard
+- tapOn: "Submit Review"
+- assertVisible: 'Thank you for your review!'

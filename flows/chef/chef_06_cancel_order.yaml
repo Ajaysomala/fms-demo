@@ -1,0 +1,18 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Precondition (TODO data): a paid order that is still cancellable. The "Free Cancellation!" banner (48-hour window) is visible in the design.
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+env:
+  REASON: "Other reason"   # design reasons shown: "Compatibility Issue" (placeholder?), "Other reason". TODO real list
+---
+- runFlow: signup_flow.yaml
+# TODO navigation: My Orders -> open the order
+- assertVisible: "Order Details"
+- tapOn: "Cancel Order"
+- assertVisible: "Order Cancellation"
+- assertVisible: 'Once cancelled, this order cannot be restored\.'
+- tapOn: ${REASON}
+- tapOn: "Next"
+# design: refund screen shows "Cancellation Refund" and the line about 5-7 business days
+- assertVisible: "Cancellation Refund"
+- tapOn: "Confirm Cancelation"        # spelled this way in the design
+- assertVisible: 'Cancellation request is placed successfully!'

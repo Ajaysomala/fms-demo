@@ -8,6 +8,7 @@ env:
 - tapOn: "English"
 - tapOn: "Next"
 - tapOn: "Sign in with Phone Number"
+- assertvisible: 
 - tapOn: "00 0000-0000"
 - inputText: ${PHONE}
 - hideKeyboard
