@@ -1,0 +1,30 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+env:
+  DISH_NAME: "Chicken Briany"   # TODO: design shows "Chicken Briany" in summaries; real dish must exist in the dish search
+  QTY: "3"                      # TODO design example is "e.g. 10"
+  NOTE: "Test note"             # TODO
+---
+- runFlow: chef_01_find_chef.yaml      # TODO navigation to "Select Booking Option"
+- tapOn: "Custom Dishes"
+- assertVisible: "Add Your Dishes"
+- assertVisible: "Dish 1"
+
+# TODO: "Select here" appears for category (and other dropdowns). Needs testIDs or index. Option list texts not in design.
+- tapOn: "Select here"
+- tapOn: "Search your dish"
+- inputText: ${DISH_NAME}
+- hideKeyboard
+- tapOn: "e.g. 10"
+- inputText: ${QTY}
+- hideKeyboard
+# TODO: unit picker ("Select Unit*", placeholder "e.g. kg"): option texts not in design
+
+- tapOn: "Type here..."
+- inputText: ${NOTE}
+- hideKeyboard
+
+# TODO: design shows a checkbox "I will provide the ingredients" only when the customer provides ingredients
+- tapOn: "Confirm Request"
+- assertVisible: 'Your request has been sent successfully!'
+- assertVisible: 'Please wait, The kitchen will review and confirm the final price within 2 hours\.'

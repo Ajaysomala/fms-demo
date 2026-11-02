@@ -1,0 +1,12 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Precondition (TODO data): an order in status "Waiting for final quote".
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+---
+- runFlow: signup_flow.yaml
+# TODO navigation: My Orders -> open the order
+- assertVisible: "Order Details"
+- assertVisible: "Waiting for final quote"
+- tapOn: "Cancel Request"
+- assertVisible: 'Are you sure you want to cancel your request\?'
+- tapOn: "Yes, Cancel"
+- assertVisible: 'Your request has been cancelled successfully!'

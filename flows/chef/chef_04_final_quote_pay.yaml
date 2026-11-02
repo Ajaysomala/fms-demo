@@ -1,0 +1,23 @@
+# DRAFT from Figma designs only. Never run. Staging only.
+# Precondition (TODO data): an order in status "Waiting for your reply" (the kitchen already sent a final quote).
+# On staging this needs the kitchen/partner side or a seeded order. Not in these designs.
+appId: com.im24x7.fms.customer.staging   # TODO confirm app
+---
+- runFlow: signup_flow.yaml
+# TODO navigation: bottom bar -> My Orders -> open the order. The bottom bar icons have no text in the design.
+- assertVisible: "Order Details"
+- assertVisible: "Waiting for your reply"
+- assertVisible: "Final Cost"
+- tapOn: "Accept & Pay"
+
+- assertVisible: "Payment Method"
+# design methods: Master Card, Visa, Apple Pay, Stripe, Cash
+# TODO: card entry is not in the designs (staging test card is known from the team, see handoff). Walk by hand first.
+- tapOn: 'Our Cancellation Policy'
+- assertVisible: 'Find Chef Cancellation Policy'
+- tapOn: "I Agree"
+# TODO: confirm the checkbox is ticked after "I Agree" (design arrow goes from the policy link to the sheet)
+
+- tapOn: "Pay Now"
+- assertVisible: 'Payment Successful!'
+- assertVisible: 'Your order has been confirmed'
