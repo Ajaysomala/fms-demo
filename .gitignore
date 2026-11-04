@@ -4,4 +4,5 @@ reports/
 .env
 *.pyc
 venv/
-venv/
+logs/
+data/

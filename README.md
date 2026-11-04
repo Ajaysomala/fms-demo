@@ -35,7 +35,7 @@ Never point this at a shared environment without telling the devs.
 
 ### 4. Mobile (Maestro, needs an emulator and the staging APK)
 ```
-maestro test flows/login.yaml
+maestro test flows/chef/chef_01_find_chef.yaml
 ```
 Flow texts are placeholders until checked against the real app.
 
